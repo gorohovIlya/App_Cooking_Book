@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My_Cooking_Book</string>
+    <string name="search_recipe">Поиск рецепта</string>
+    <string name="my_recipes">Мои рецепты</string>
+    <string name="quit">Выход</string>
+    <string name="my_cooking_book_text">МОЯ КУЛИНАРНАЯ КНИГА</string>
+</resources>
