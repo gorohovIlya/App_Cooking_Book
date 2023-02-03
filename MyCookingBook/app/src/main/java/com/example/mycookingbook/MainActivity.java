@@ -18,7 +18,6 @@ import com.example.mycookingbook.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    Button btnSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

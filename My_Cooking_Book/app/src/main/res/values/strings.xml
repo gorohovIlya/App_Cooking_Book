@@ -3,5 +3,11 @@
     <string name="search_recipe">Поиск рецепта</string>
     <string name="my_recipes">Мои рецепты</string>
     <string name="quit">Выход</string>
-    <string name="my_cooking_book_text">МОЯ КУЛИНАРНАЯ КНИГА</string>
+    <string name="my_cooking_book_text">МОЯ КУЛИНАРНАЯ \n КНИГА</string>
+    <string name="home">Home</string>
+    <string name="notes">Notes</string>
+    <string name="search">Search</string>
+    <string name="search_fragment">Search Fragment</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="notes_fragment">Notes Fragment</string>
 </resources>
