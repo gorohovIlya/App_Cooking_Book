@@ -9,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.my_cooking_book.R;
+import com.example.my_cooking_book.parse.ParsingManager;
 
 public class SearchFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_search, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_search, container, false);
+        ParsingManager.requestRecipeData("cucumber tomato", getActivity());
+        return v;
     }
 }
