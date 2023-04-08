@@ -9,5 +9,9 @@
     <string name="search">Search</string>
     <string name="search_fragment">Search Fragment</string>
     <string name="home_fragment">Home Fragment</string>
-    <string name="notes_fragment">Notes Fragment</string>
+    <string name="notes_fragment">My Recipes</string>
+    <string name="add_recipe">CREATE NEW RECIPE</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="adding_a_recipe">ADDING A RECIPE</string>
 </resources>
