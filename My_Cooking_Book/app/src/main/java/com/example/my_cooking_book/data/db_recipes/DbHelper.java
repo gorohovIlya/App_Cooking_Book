@@ -1,4 +1,4 @@
-package com.example.my_cooking_book.db_recipes;
+package com.example.my_cooking_book.data.db_recipes;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

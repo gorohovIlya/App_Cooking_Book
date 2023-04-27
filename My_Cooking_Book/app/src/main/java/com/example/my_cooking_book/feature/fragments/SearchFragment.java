@@ -1,4 +1,4 @@
-package com.example.my_cooking_book.fragments;
+package com.example.my_cooking_book.feature.fragments;
 
 import android.os.Bundle;
 
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.my_cooking_book.R;
-import com.example.my_cooking_book.parse.ParsingManager;
+import com.example.my_cooking_book.data.parse.ParsingManager;
 
 public class SearchFragment extends Fragment {
 

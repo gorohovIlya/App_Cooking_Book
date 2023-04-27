@@ -1,4 +1,4 @@
-package com.example.my_cooking_book.fragments;
+package com.example.my_cooking_book.feature.fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
