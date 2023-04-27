@@ -1,4 +1,4 @@
-package com.example.my_cooking_book.parse;
+package com.example.my_cooking_book.data.parse;
 
 import android.content.Context;
 import android.util.Log;

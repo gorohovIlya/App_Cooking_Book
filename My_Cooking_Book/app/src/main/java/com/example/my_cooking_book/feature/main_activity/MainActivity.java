@@ -1,4 +1,4 @@
-package com.example.my_cooking_book;
+package com.example.my_cooking_book.feature.main_activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,9 +6,10 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.my_cooking_book.fragments.HomeFragment;
-import com.example.my_cooking_book.fragments.NotesFragment;
-import com.example.my_cooking_book.fragments.SearchFragment;
+import com.example.my_cooking_book.R;
+import com.example.my_cooking_book.feature.fragments.HomeFragment;
+import com.example.my_cooking_book.feature.fragments.NotesFragment;
+import com.example.my_cooking_book.feature.fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
