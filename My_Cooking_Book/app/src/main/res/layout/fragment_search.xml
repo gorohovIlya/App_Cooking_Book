@@ -37,6 +37,17 @@
         app:layout_constraintStart_toStartOf="@id/title_search"
         app:layout_constraintTop_toBottomOf="@+id/title_search" />
 
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/btn_search"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/et_search"
+        app:layout_constraintStart_toStartOf="@+id/et_search"
+        app:layout_constraintTop_toBottomOf="@+id/et_search"/>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="450dp"
@@ -44,9 +55,9 @@
         app:cardElevation="10dp"
         app:cardCornerRadius="26dp"
         android:layout_margin="10dp"
-        app:layout_constraintEnd_toEndOf="@id/et_search"
-        app:layout_constraintStart_toStartOf="@id/et_search"
-        app:layout_constraintTop_toBottomOf="@id/et_search">
+        app:layout_constraintEnd_toEndOf="@+id/btn_search"
+        app:layout_constraintStart_toStartOf="@+id/btn_search"
+        app:layout_constraintTop_toBottomOf="@+id/btn_search">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
