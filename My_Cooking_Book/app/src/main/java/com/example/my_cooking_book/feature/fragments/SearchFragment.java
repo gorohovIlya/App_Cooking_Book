@@ -40,15 +40,16 @@ public class SearchFragment extends Fragment {
                     @Override
                     public void onResponse(@NonNull Call<RecipeResponse> call, @NonNull Response<RecipeResponse> response) {
                         if(response.isSuccessful() && response.code() == 200){
-                            Log.e("MyLog", response.toString());
+                            RecipeResponse recipeResponse = response.body();
+                            Log.i("MyLog", recipeResponse.hits[0].recipe.label + "! ");
                         } else{
-                            Log.e("MyLog", "Ответ не пришёл");
+                            Log.i("MyLog", "Ответ не пришёл");
                         }
                     }
 
                     @Override
                     public void onFailure(@NonNull Call<RecipeResponse> call, @NonNull Throwable t) {
-                        Log.e("MyLog", "Ошибка");
+                        Log.i("MyLog", "Ошибка");
                     }
                 });
             }

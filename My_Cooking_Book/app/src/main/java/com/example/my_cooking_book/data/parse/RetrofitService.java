@@ -1,5 +1,7 @@
 package com.example.my_cooking_book.data.parse;
 
+import android.util.Log;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
@@ -12,6 +14,7 @@ public class RetrofitService {
     private static Retrofit retrofit;
 
     private static Retrofit create(){
+        Log.i("MyLog", "create в RetrofitService");
         return new Retrofit.Builder()
                 .addConverterFactory(MoshiConverterFactory.create())
                 .baseUrl(BASE_URL)
@@ -19,6 +22,7 @@ public class RetrofitService {
     }
 
     public static Retrofit getInstance(){
+        Log.i("MyLog", "getInstance в RetrofitService");
         if(retrofit == null) retrofit = create();
         return retrofit;
     }
