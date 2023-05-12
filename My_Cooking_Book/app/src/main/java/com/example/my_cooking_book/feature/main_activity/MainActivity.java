@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.my_cooking_book.R;
-import com.example.my_cooking_book.feature.fragments.HomeFragment;
-import com.example.my_cooking_book.feature.fragments.NotesFragment;
-import com.example.my_cooking_book.feature.fragments.SearchFragment;
+import com.example.my_cooking_book.feature.home.HomeFragment;
+import com.example.my_cooking_book.feature.notes.NotesFragment;
+import com.example.my_cooking_book.feature.search_recipe.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
