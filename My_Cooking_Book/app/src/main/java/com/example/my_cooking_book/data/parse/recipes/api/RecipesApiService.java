@@ -1,8 +1,8 @@
-package com.example.my_cooking_book.data.parse.recipes;
+package com.example.my_cooking_book.data.parse.recipes.api;
 
 import android.util.Log;
 
-import com.example.my_cooking_book.data.parse.RetrofitService;
+import com.example.my_cooking_book.data.parse.service.RetrofitService;
 
 public class RecipesApiService {
 

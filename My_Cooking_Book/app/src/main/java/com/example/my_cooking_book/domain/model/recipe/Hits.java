@@ -1,22 +1,17 @@
 package com.example.my_cooking_book.domain.model.recipe;
 
+import java.util.ArrayList;
+
 public class Hits {
 
-    public class Recipes {
-        String label;
-        String image;
-        String calories;
-        String totalWeight;
-        String totalTime;
-
-        public class Ingredients {
-
-            String text;
-            String weight;
-        }
-
-        Ingredients ingredients[];
+    public class Recipe {
+        public String label;
+        public String image;
+        public String calories;
+        public String totalWeight;
+        public String totalTime;
+        public ArrayList<String> ingredientLines;
     }
 
-    Recipes recipes[];
+    public Recipe recipe;
 }

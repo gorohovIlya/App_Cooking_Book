@@ -2,10 +2,9 @@ package com.example.my_cooking_book.data.repository;
 
 import android.util.Log;
 
-import com.example.my_cooking_book.data.parse.RetrofitService;
-import com.example.my_cooking_book.data.parse.recipes.RecipeResponse;
-import com.example.my_cooking_book.data.parse.recipes.RecipesApiService;
-import com.example.my_cooking_book.domain.model.recipe.Hits;
+import com.example.my_cooking_book.data.parse.service.RetrofitService;
+import com.example.my_cooking_book.data.parse.recipes.response.RecipeResponse;
+import com.example.my_cooking_book.data.parse.recipes.api.RecipesApiService;
 
 import retrofit2.Call;
 

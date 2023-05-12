@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.fragments.SearchFragment"
+    tools:context=".feature.search_recipe.SearchFragment"
     android:background="@drawable/background_search"
     android:alpha="1">
 
@@ -50,7 +50,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="350dp"
         android:id="@+id/card_recipes"
         app:cardElevation="10dp"
         app:cardCornerRadius="26dp"

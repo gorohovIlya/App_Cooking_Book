@@ -1,9 +1,9 @@
-package com.example.my_cooking_book.data.parse;
+package com.example.my_cooking_book.data.parse.service;
 
 import android.util.Log;
 
 import retrofit2.Retrofit;
-import retrofit2.converter.moshi.MoshiConverterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitService {
 
@@ -16,7 +16,7 @@ public class RetrofitService {
     private static Retrofit create(){
         Log.i("MyLog", "create в RetrofitService");
         return new Retrofit.Builder()
-                .addConverterFactory(MoshiConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
                 .build();
     }
