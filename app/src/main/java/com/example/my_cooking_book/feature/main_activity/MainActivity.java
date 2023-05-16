@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.my_cooking_book.R;
+import com.example.my_cooking_book.databinding.ActivityMainBinding;
 import com.example.my_cooking_book.feature.home.HomeFragment;
 import com.example.my_cooking_book.feature.notes.NotesFragment;
 import com.example.my_cooking_book.feature.search_recipe.SearchFragment;
@@ -20,17 +22,19 @@ public class MainActivity extends AppCompatActivity {
     SearchFragment searchFragment = new SearchFragment();
     HomeFragment homeFragment = new HomeFragment();
     NotesFragment notesFragment = new NotesFragment();
+
+    private ActivityMainBinding binding;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, searchFragment).commit();
 
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {

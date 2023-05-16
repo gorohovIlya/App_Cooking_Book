@@ -20,6 +20,7 @@ import android.widget.SimpleAdapter;
 import com.example.my_cooking_book.R;
 import com.example.my_cooking_book.data.parse.recipes.response.RecipeResponse;
 import com.example.my_cooking_book.data.repository.RecipesRepository;
+import com.example.my_cooking_book.databinding.FragmentSearchBinding;
 import com.example.my_cooking_book.domain.model.recipe.Hits;
 import com.squareup.picasso.Picasso;
 
@@ -32,23 +33,20 @@ import retrofit2.Response;
 
 public class SearchFragment extends Fragment {
 
-    EditText etSearch;
-    Button btnSearch;
-    ListView listView;
     ArrayList<Hits> listRecipes;
 
+    private FragmentSearchBinding binding;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentSearchBinding.inflate(inflater, container, false);
+        View v = binding.getRoot();
 
-        etSearch = view.findViewById(R.id.et_search);
-        btnSearch = view.findViewById(R.id.btn_search);
-        listView = (ListView) view.findViewById(R.id.list_recipes);
-
-        btnSearch.setOnClickListener(new View.OnClickListener() {
+        binding.btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<RecipeResponse> responseCall = RecipesRepository.getRecipes(etSearch.getText().toString());
+                binding.progressBar.setVisibility(View.VISIBLE);
+                Call<RecipeResponse> responseCall = RecipesRepository.getRecipes(binding.etSearch.getText().toString());
                 responseCall.enqueue(new Callback<RecipeResponse>() {
                     @Override
                     public void onResponse(@NonNull Call<RecipeResponse> call, @NonNull Response<RecipeResponse> response) {
@@ -59,8 +57,8 @@ public class SearchFragment extends Fragment {
                             ArrayList<HashMap<String, Object>> dataList = new ArrayList<>();
                             for (int i = 0; i < listRecipes.size(); i++) {
                                 HashMap<String, Object> map = new HashMap<>();
-                                map.put("image", listRecipes.get(i).recipe.image);
-                                map.put("label", listRecipes.get(i).recipe.label);
+                                map.put("image", listRecipes.get(i).getRecipe().getImage());
+                                map.put("label", listRecipes.get(i).getRecipe().getLabel());
                                 dataList.add(map);
                             }
                             String [] from = {"image", "label"};
@@ -78,9 +76,10 @@ public class SearchFragment extends Fragment {
                                     }
                                 }
                             });
-                            listView.setAdapter(adapter);
+                            binding.listRecipes.setAdapter(adapter);
+                            binding.progressBar.setVisibility(View.INVISIBLE);
 
-                            Log.i("MyLog", listRecipes.get(0).recipe.ingredientLines.get(0) + " !");
+                            Log.i("MyLog", listRecipes.get(0).getRecipe().getUrl() + " !");
                         } else{
                             Log.i("MyLog", "Ответ не пришёл");
                         }
@@ -94,10 +93,17 @@ public class SearchFragment extends Fragment {
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.listRecipes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                RecipeFragment recipeFragment = new RecipeFragment();
+                RecipeFragment recipeFragment = new RecipeFragment(
+                        listRecipes.get(position).getRecipe().getImage(),
+                        listRecipes.get(position).getRecipe().getLabel(),
+                        listRecipes.get(position).getRecipe().getCalories(),
+                        listRecipes.get(position).getRecipe().getTotalWeight(),
+                        listRecipes.get(position).getRecipe().getTotalTime(),
+                        listRecipes.get(position).getRecipe().getUrl(),
+                        listRecipes.get(position).getRecipe().getIngredientLines());
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.container, recipeFragment);
                 transaction.addToBackStack(null);
@@ -105,6 +111,6 @@ public class SearchFragment extends Fragment {
             }
         });
 
-        return view;
+        return v;
     }
 }

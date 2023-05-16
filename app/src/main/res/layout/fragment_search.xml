@@ -17,6 +17,7 @@
         android:textColor="#FF686B"
         android:textSize="30sp"
         android:textStyle="bold|italic"
+
         android:background="@drawable/gradient1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,9 +67,15 @@
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/list_recipes"
-                />
+                android:id="@+id/list_recipes" />
         </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_gravity="center"/>
     </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

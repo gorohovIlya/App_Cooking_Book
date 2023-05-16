@@ -5,13 +5,47 @@ import java.util.ArrayList;
 public class Hits {
 
     public class Recipe {
-        public String label;
-        public String image;
-        public String calories;
-        public String totalWeight;
-        public String totalTime;
-        public ArrayList<String> ingredientLines;
+        private String label;
+        private String image;
+        private String calories;
+        private String totalWeight;
+        private String totalTime;
+        private ArrayList<String> ingredientLines;
+        private String url;
+
+        public String getLabel() {
+            return label;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public String getCalories() {
+            return calories;
+        }
+
+        public String getTotalWeight() {
+            return totalWeight;
+        }
+
+        public String getTotalTime() {
+            return totalTime;
+        }
+
+        public ArrayList<String> getIngredientLines() {
+            return ingredientLines;
+        }
+
+        public String getUrl() {
+            return url;
+        }
     }
 
-    public Recipe recipe;
+    private Recipe recipe;
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
 }
