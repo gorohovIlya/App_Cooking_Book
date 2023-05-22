@@ -77,7 +77,7 @@ public class SearchFragment extends Fragment {
                                 }
                             });
                             binding.listRecipes.setAdapter(adapter);
-                            binding.progressBar.setVisibility(View.INVISIBLE);
+                            binding.progressBar.setVisibility(View.GONE);
 
                             Log.i("MyLog", listRecipes.get(0).getRecipe().getUrl() + " !");
                         } else{

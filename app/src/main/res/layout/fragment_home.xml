@@ -5,16 +5,15 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".feature.search_recipe.SearchFragment"
-    android:background="@drawable/gradient1">
+    android:background="@color/beige">
 
     <ImageView
         android:id="@+id/cook_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        app:srcCompat="@drawable/cooking_photo" />
+        app:srcCompat="@drawable/background_food" />
 
     <TextView
         android:id="@+id/textView"
@@ -22,9 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cook_img"
         android:layout_centerInParent="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:text="@string/my_cooking_book_text"
-        android:textColor="#FF5722"
+        android:textColor="@color/red"
         android:textSize="30sp"
         android:textStyle="bold|italic"
         android:gravity="center_horizontal"/>
