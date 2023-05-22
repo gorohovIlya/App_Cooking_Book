@@ -5,8 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".feature.search_recipe.SearchFragment"
-    android:background="@drawable/background_search"
+    android:background="@color/beige"
     android:alpha="1">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image_search"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/cooking_photo"
+        />
 
     <TextView
         android:id="@+id/title_search"
@@ -14,24 +24,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:text="@string/title_search_text"
-        android:textColor="#FF686B"
+        android:textColor="@color/red"
         android:textSize="30sp"
+        android:layout_marginTop="20dp"
         android:textStyle="bold|italic"
-
-        android:background="@drawable/gradient1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.337" />
+        app:layout_constraintTop_toBottomOf="@+id/image_search"
+        app:layout_constraintEnd_toEndOf="@+id/image_search"
+        app:layout_constraintStart_toStartOf="@+id/image_search" />
 
     <EditText
         android:id="@+id/et_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:background="@drawable/gradient1"
         android:hint="@string/et_enter_ingr"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@id/title_search"
@@ -63,7 +68,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient1">
+            android:background="#FFF6A7">
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -73,7 +78,8 @@
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
+            android:indeterminateTint="@color/beige"
+            android:visibility="gone"
             android:layout_gravity="center"/>
     </androidx.cardview.widget.CardView>
 

@@ -1,6 +1,8 @@
 package com.example.my_cooking_book.feature.search_recipe;
 
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +57,10 @@ public class RecipeFragment extends Fragment {
         binding.calories.setText(calories + " kcal");
         binding.time.setText(totalTime + " min");
         binding.weight.setText(totalWeight + " g");
+
+        binding.webUrl.setText(url);
+        Linkify.addLinks(binding.webUrl, Linkify.WEB_URLS);
+        binding.webUrl.setMovementMethod(LinkMovementMethod.getInstance());
 
         ArrayList<HashMap<String, Object>> dataList = new ArrayList<>();
         for (int i = 0; i < ingredientsLines.size(); i++) {
