@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My_Cooking_Book</string>
+    <string name="app_name">My Cooking Book</string>
     <string name="title_search_text">Search recipe</string>
     <string name="my_recipes">My recipes</string>
     <string name="quit">Exit</string>
