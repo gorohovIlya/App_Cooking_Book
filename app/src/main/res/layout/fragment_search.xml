@@ -43,16 +43,37 @@
         app:layout_constraintStart_toStartOf="@id/title_search"
         app:layout_constraintTop_toBottomOf="@+id/title_search" />
 
-    <Button
-        android:id="@+id/btn_search"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/btn_search"
-        android:minHeight="48dp"
+        android:id="@+id/add_ingredients"
         app:layout_constraintEnd_toEndOf="@+id/et_search"
         app:layout_constraintStart_toStartOf="@+id/et_search"
-        app:layout_constraintTop_toBottomOf="@+id/et_search"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_search" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear_buttons"
+        app:layout_constraintEnd_toEndOf="@+id/add_ingredients"
+        app:layout_constraintStart_toStartOf="@+id/add_ingredients"
+        app:layout_constraintTop_toBottomOf="@+id/add_ingredients"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/btn_add"
+            android:minHeight="48dp" />
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/btn_search"
+            android:minHeight="48dp" />
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -61,9 +82,9 @@
         app:cardElevation="10dp"
         app:cardCornerRadius="26dp"
         android:layout_margin="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_search"
-        app:layout_constraintStart_toStartOf="@+id/btn_search"
-        app:layout_constraintTop_toBottomOf="@+id/btn_search">
+        app:layout_constraintEnd_toEndOf="@+id/linear_buttons"
+        app:layout_constraintStart_toStartOf="@+id/linear_buttons"
+        app:layout_constraintTop_toBottomOf="@+id/linear_buttons">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
