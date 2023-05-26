@@ -63,9 +63,9 @@ public class NotesListFragment extends Fragment{
         ArrayList<HashMap<String, Object>> dataList = new ArrayList<>();
         for (int i = 0; i < listNotes.size(); i++) {
             HashMap<String, Object> map = new HashMap<>();
-            map.put("name", listNotes.get(i).recipeNote_name);
-            map.put("ingreds", listNotes.get(i).recipeNote_ingreds);
-            map.put("way_of_prep", listNotes.get(i).recipeNote_instruction);
+            map.put("name", listNotes.get(i).getRecipeNote_name());
+            map.put("ingreds", listNotes.get(i).getRecipeNote_ingreds());
+            map.put("way_of_prep", listNotes.get(i).getRecipeNote_instruction());
             dataList.add(map);
         }
         String[] from = {"name"};
