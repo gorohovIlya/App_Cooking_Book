@@ -10,20 +10,20 @@ import android.view.View;
 import com.example.my_cooking_book.R;
 import com.example.my_cooking_book.databinding.ActivityMainBinding;
 import com.example.my_cooking_book.feature.home.HomeFragment;
-import com.example.my_cooking_book.feature.notes.NotesFragment;
+import com.example.my_cooking_book.feature.notes.NoteFragment;
+import com.example.my_cooking_book.feature.notes.NotesListFragment;
 import com.example.my_cooking_book.feature.search_recipe.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
-    BottomNavigationView  bottomNavigationView;
-
     SearchFragment searchFragment = new SearchFragment();
     HomeFragment homeFragment = new HomeFragment();
-    NotesFragment notesFragment = new NotesFragment();
+    NotesListFragment notesListFragment = new NotesListFragment();
 
     private ActivityMainBinding binding;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment).commit();
                         return true;
                     case R.id.notes:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, notesFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, notesListFragment).commit();
                         return true;
                 }
                 return false;

@@ -23,4 +23,15 @@
     <string name="info_notes">- You will be presented with a list of notes (recipes).\n\n- To view the note, click on the corresponding note.\n\n- By clicking on the "Create new recipe" button, create a note by filling in the fields.\n\n</string>
     <string name="desc_info">  The application "My Cooking Book" is an application that will help you learn various recipes, as well as save your own recipes\n</string>
     <string name="develop_info">  Developed by Michail Deshin and Ilya Gorohov\n</string>
+    <string name="note_name">note_name</string>
+    <string name="text">text</string>
+    <string name="ingredients1">ingredients1</string>
+    <string name="ingreds">ingreds</string>
+    <string name="instruction">instruction</string>
+    <string name="how_to_prepare">how_to_prepare</string>
+    <string name="back">back</string>
+    <string name="delete">delete</string>
+    <string name="recipe_name">recipe_name</string>
+    <string name="ingredients">ingredients</string>
+    <string name="add">add</string>
 </resources>
