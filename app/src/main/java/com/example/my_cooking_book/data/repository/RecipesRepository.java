@@ -12,6 +12,6 @@ public class RecipesRepository {
 
     public static Call<RecipeResponse> getRecipes(String ingredient) {
         Log.i("MyLog", "getRecipes в RecipesRepository");
-        return RecipesApiService.getInstance().getRecipes("public", ingredient, RetrofitService.APP_ID, RetrofitService.APP_KEY);
+        return RecipesApiService.getInstance().getRecipes(ingredient, RetrofitService.APP_ID, RetrofitService.APP_KEY, 100);
     }
 }
