@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">My_Cooking_Book</string>
+    <string name="title_search_text">Search recipe</string>
+    <string name="my_recipes">My recipes</string>
+    <string name="quit">Exit</string>
+    <string name="my_cooking_book_text">MY COOKING \n BOOK</string>
+    <string name="home">Home</string>
+    <string name="notes">Notes</string>
+    <string name="search">Search</string>
+    <string name="search_fragment">Search Fragment</string>
+    <string name="et_enter_ingr">Enter ingredient</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="notes_fragment">My Recipes</string>
+    <string name="add_recipe">CREATE NEW RECIPE</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="adding_a_recipe">ADDING A RECIPE</string>
+    <string name="btn_search">Search</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="add">ADD</string>
+    <string name="recipe_name">Recipe name</string>
+    <string name="large_text">
+
+    </string>
+    <string name="instruction">How to prepare:</string>
+    <string name="back">BACK</string>
+    <string name="delete">DELETE</string>
+    <string name="how_to_prepare">how_to_prepare</string>
+    <string name="ingreds">ingreds</string>
+    <string name="ingredients1">Ingredients</string>
+    <string name="text">text</string>
+    <string name="note_name">note_name</string>
+</resources>
