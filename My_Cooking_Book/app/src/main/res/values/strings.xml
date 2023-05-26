@@ -16,4 +16,18 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="adding_a_recipe">ADDING A RECIPE</string>
     <string name="btn_search">Search</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="add">ADD</string>
+    <string name="recipe_name">Recipe name</string>
+    <string name="large_text">
+
+    </string>
+    <string name="instruction">How to prepare:</string>
+    <string name="back">BACK</string>
+    <string name="delete">DELETE</string>
+    <string name="how_to_prepare">how_to_prepare</string>
+    <string name="ingreds">ingreds</string>
+    <string name="ingredients1">Ingredients</string>
+    <string name="text">text</string>
+    <string name="note_name">note_name</string>
 </resources>

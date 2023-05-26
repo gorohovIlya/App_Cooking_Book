@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 import com.example.my_cooking_book.R;
 import com.example.my_cooking_book.feature.home.HomeFragment;
-import com.example.my_cooking_book.feature.notes.NotesFragment;
+import com.example.my_cooking_book.feature.notes.NotesListFragment;
 import com.example.my_cooking_book.feature.search_recipe.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     SearchFragment searchFragment = new SearchFragment();
     HomeFragment homeFragment = new HomeFragment();
-    NotesFragment notesFragment = new NotesFragment();
+    NotesListFragment notesFragment = new NotesListFragment();
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

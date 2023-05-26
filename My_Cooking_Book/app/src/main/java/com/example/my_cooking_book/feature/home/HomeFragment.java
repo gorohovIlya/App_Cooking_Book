@@ -12,6 +12,7 @@ import com.example.my_cooking_book.R;
 
 public class HomeFragment extends Fragment {
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
