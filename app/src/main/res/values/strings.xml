@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My_Cooking_Book</string>
+    <string name="app_name">My Cooking Book</string>
     <string name="title_search_text">Search recipe</string>
     <string name="my_recipes">My recipes</string>
     <string name="quit">Exit</string>
@@ -16,4 +16,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="adding_a_recipe">ADDING A RECIPE</string>
     <string name="btn_search">Search</string>
+    <string name="btn_add">Add</string>
+    <string name="information_text">Information</string>
+    <string name="info_home">- View the information about this application by clicking on the corresponding icon.\n\n</string>
+    <string name="info_search">- Enter the ingredient (name of the dish), click on the "Add" button, the ingredient you added (name) will appear in a separate field.\n\n- Click on the "Search" button to search by the added ingredients (names).\n\n- To remove the added ingredients (names), click on the corresponding button.\n\n- When you click on the recipe, you will be able to get acquainted with the recipe in more detail. To read the instructions for the recipe, follow the link.\n\n</string>
+    <string name="info_notes">- You will be presented with a list of notes (recipes).\n\n- To view the note, click on the corresponding note.\n\n- By clicking on the "Create new recipe" button, create a note by filling in the fields.\n\n</string>
+    <string name="desc_info">  The application "My Cooking Book" is an application that will help you learn various recipes, as well as save your own recipes\n</string>
+    <string name="develop_info">  Developed by Michail Deshin and Ilya Gorohov\n</string>
 </resources>

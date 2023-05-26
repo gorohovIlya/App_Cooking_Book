@@ -6,15 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.example.my_cooking_book.R;
@@ -25,7 +21,6 @@ import com.example.my_cooking_book.domain.model.recipe.Hits;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,6 +29,7 @@ import retrofit2.Response;
 public class SearchFragment extends Fragment {
 
     ArrayList<Hits> listRecipes;
+    private String addIngredientText = "";
 
     private FragmentSearchBinding binding;
 
@@ -42,54 +38,76 @@ public class SearchFragment extends Fragment {
         binding = FragmentSearchBinding.inflate(inflater, container, false);
         View v = binding.getRoot();
 
+        if (!addIngredientText.equals("")) {
+            binding.addIngredients.setText(addIngredientText);
+            binding.btnDeleteIcon.setVisibility(View.VISIBLE);
+        }
+
+        if (listRecipes != null) {
+            SimpleAdapter adapter = new SimpleAdapter(v.getContext(),
+                    SimpleRecipeAdapter.createDataListForAdapter(listRecipes),
+                    R.layout.item_list_recipes,
+                    SimpleRecipeAdapter.createFromForAdapter(),
+                    SimpleRecipeAdapter.createToForAdapter());
+            adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+                @Override
+                public boolean setViewValue(View view, Object data, String textRepresentation) {
+                    if (view.getId() == R.id.image_item) {
+                        Picasso.get().load(data.toString()).into((ImageView) view);
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            });
+            binding.listRecipes.setAdapter(adapter);
+        }
         binding.btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.progressBar.setVisibility(View.VISIBLE);
-                Call<RecipeResponse> responseCall = RecipesRepository.getRecipes(binding.etSearch.getText().toString());
-                responseCall.enqueue(new Callback<RecipeResponse>() {
-                    @Override
-                    public void onResponse(@NonNull Call<RecipeResponse> call, @NonNull Response<RecipeResponse> response) {
-                        if(response.isSuccessful() && response.code() == 200){
-                            RecipeResponse recipeResponse = response.body();
-                            listRecipes = recipeResponse.hits;
+                if (!binding.addIngredients.getText().toString().equals("")) {
+                    binding.progressBar.setVisibility(View.VISIBLE);
+                    Call<RecipeResponse> responseCall = RecipesRepository.getRecipes(binding.addIngredients.getText().toString());
+                    responseCall.enqueue(new Callback<RecipeResponse>() {
+                        @Override
+                        public void onResponse(@NonNull Call<RecipeResponse> call, @NonNull Response<RecipeResponse> response) {
+                            if (response.isSuccessful() && response.code() == 200) {
+                                RecipeResponse recipeResponse = response.body();
+                                listRecipes = recipeResponse.hits;
 
-                            ArrayList<HashMap<String, Object>> dataList = new ArrayList<>();
-                            for (int i = 0; i < listRecipes.size(); i++) {
-                                HashMap<String, Object> map = new HashMap<>();
-                                map.put("image", listRecipes.get(i).getRecipe().getImage());
-                                map.put("label", listRecipes.get(i).getRecipe().getLabel());
-                                dataList.add(map);
-                            }
-                            String [] from = {"image", "label"};
-                            int [] to = {R.id.image_item, R.id.label};
-
-                            SimpleAdapter adapter = new SimpleAdapter(v.getContext(), dataList, R.layout.item_list_recipes, from, to);
-                            adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
-                                @Override
-                                public boolean setViewValue(View view, Object data, String textRepresentation) {
-                                    if (view.getId() == R.id.image_item) {
-                                        Picasso.get().load(data.toString()).into((ImageView) view);
-                                        return true;
-                                    } else {
-                                        return false;
-                                    }
+                                if (listRecipes.size() == 0) {
+                                    binding.textNoRecipes.setVisibility(View.VISIBLE);
+                                    binding.listRecipes.setVisibility(View.GONE);
+                                    binding.progressBar.setVisibility(View.GONE);
                                 }
-                            });
-                            binding.listRecipes.setAdapter(adapter);
-                            binding.progressBar.setVisibility(View.GONE);
 
-                            Log.i("MyLog", listRecipes.get(0).getRecipe().getUrl() + " !");
-                        } else{
-                            Log.i("MyLog", "Ответ не пришёл");
+                                SimpleAdapter adapter = new SimpleAdapter(v.getContext(),
+                                        SimpleRecipeAdapter.createDataListForAdapter(listRecipes),
+                                        R.layout.item_list_recipes,
+                                        SimpleRecipeAdapter.createFromForAdapter(),
+                                        SimpleRecipeAdapter.createToForAdapter());
+                                adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+                                    @Override
+                                    public boolean setViewValue(View view, Object data, String textRepresentation) {
+                                        if (view.getId() == R.id.image_item) {
+                                            Picasso.get().load(data.toString()).into((ImageView) view);
+                                            return true;
+                                        } else {
+                                            return false;
+                                        }
+                                    }
+                                });
+                                binding.listRecipes.setAdapter(adapter);
+                                binding.progressBar.setVisibility(View.GONE);
+                            }
                         }
-                    }
+                        @Override
+                        public void onFailure(@NonNull Call<RecipeResponse> call, @NonNull Throwable t) {
 
-                    @Override
-                    public void onFailure(@NonNull Call<RecipeResponse> call, @NonNull Throwable t) {
-                        Log.i("MyLog", "Ошибка");
-                    }
-                });
+                        }
+
+                    });
+                }
             }
         });
 
@@ -108,6 +126,28 @@ public class SearchFragment extends Fragment {
                 transaction.replace(R.id.container, recipeFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+            }
+        });
+
+        binding.btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!binding.etSearch.getText().toString().equals("")) {
+                    binding.addIngredients.append(binding.etSearch.getText().toString() + " ");
+                    addIngredientText = binding.addIngredients.getText().toString();
+                    binding.etSearch.setText("");
+                }
+                if (!binding.addIngredients.getText().toString().equals(""))
+                    binding.btnDeleteIcon.setVisibility(View.VISIBLE);
+            }
+        });
+
+        binding.btnDeleteIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.addIngredients.setText("");
+                binding.btnDeleteIcon.setVisibility(View.GONE);
+                addIngredientText = "";
             }
         });
 
