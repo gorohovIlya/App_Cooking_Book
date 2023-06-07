@@ -1,4 +1,4 @@
-package com.example.my_cooking_book.feature.search_recipe;
+package com.example.my_cooking_book.feature.search_recipe.search;
 
 import com.example.my_cooking_book.R;
 import com.example.my_cooking_book.domain.model.recipe.Hits;

@@ -1,30 +1,26 @@
 package com.example.my_cooking_book.feature.notes;
 
 import android.annotation.SuppressLint;
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import com.example.my_cooking_book.feature.notes.DbManager;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.my_cooking_book.R;
-import com.example.my_cooking_book.data.db_recipes.ConstantsOfDb;
-import com.example.my_cooking_book.data.db_recipes.DbHelper;
+import com.example.my_cooking_book.data.db.DbHelper;
 
 public class CreatingRecipeFragment extends Fragment {
     EditText recipe_name;
     EditText ingredients;
     EditText how_to_prepare;
     Button create_recipe;
-    SQLiteDatabase sdb;
+
     DbHelper dbHelper;
 
     @SuppressLint("MissingInflatedId")
@@ -41,16 +37,16 @@ public class CreatingRecipeFragment extends Fragment {
         create_recipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sdb = dbHelper.getWritableDatabase();
-                DbManager dbManager = new DbManager(getContext());
-                ContentValues user_data = dbManager.insertToDb(recipe_name.getText().toString(),
-                        ingredients.getText().toString(),
-                        how_to_prepare.getText().toString());
-                sdb.insert(ConstantsOfDb.TABLE_NAME_1, null, user_data);
-                Toast.makeText(getContext(), "Информация сохранена",
-                        Toast.LENGTH_SHORT).show();
+                DbHelper dbHelper = new DbHelper(view.getContext());
+                dbHelper.addRecipe(recipe_name.getText().toString().trim(),
+                        ingredients.getText().toString().trim(),
+                        how_to_prepare.getText().toString().trim());
 
-
+                NotesListFragment notesListFragment = new NotesListFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, notesListFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 

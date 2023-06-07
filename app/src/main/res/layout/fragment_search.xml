@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.search_recipe.SearchFragment"
+    tools:context=".feature.search_recipe.search.SearchFragment"
     android:background="@color/beige"
     android:alpha="1">
 
@@ -37,7 +37,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:hint="@string/et_enter_ingr"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@id/title_search"

@@ -1,20 +1,19 @@
-package com.example.my_cooking_book.data.parse.service;
+package com.example.my_cooking_book.data.parse.services;
 
 import android.util.Log;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitService {
+public class RetrofitTranslateService {
 
-    private static final String BASE_URL = "https://api.edamam.com";
-    public static final String APP_ID = "b0f2d8f2";
-    public static final String APP_KEY = "04e3a4c65b1c48a7846779e2851726cf";
+    private static final String BASE_URL = "https://translate.api.cloud.yandex.net";
+    public static String AIM_TOKEN = "t1.9euelZrMzs2KjJWLkpuSm4qQmMeKm-3rnpWanZzPmM2Pl4_Pl5LGy4qezZPl9PdEYSJc-e8PRgTl3fT3BBAgXPnvD0YE5Q.DGKUoUngs-Rr36WYVF6TPqjT5FfNUEpCDE_xh9HleuCBWgIh5WSBO9qbX17mGJxDquptEyGkZ22AX_ZtqR0rBQ";
+    public static final String FOLDER_ID = "b1gv8vupjdrpuciv2va8";
 
     private static Retrofit retrofit;
 
     private static Retrofit create(){
-        Log.i("MyLog", "create в RetrofitService");
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
@@ -22,7 +21,6 @@ public class RetrofitService {
     }
 
     public static Retrofit getInstance(){
-        Log.i("MyLog", "getInstance в RetrofitService");
         if(retrofit == null) retrofit = create();
         return retrofit;
     }
