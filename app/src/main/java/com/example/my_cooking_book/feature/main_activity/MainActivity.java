@@ -10,10 +10,8 @@ import android.view.View;
 import com.example.my_cooking_book.R;
 import com.example.my_cooking_book.databinding.ActivityMainBinding;
 import com.example.my_cooking_book.feature.home.HomeFragment;
-import com.example.my_cooking_book.feature.notes.NoteFragment;
 import com.example.my_cooking_book.feature.notes.NotesListFragment;
-import com.example.my_cooking_book.feature.search_recipe.SearchFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.my_cooking_book.feature.search_recipe.search.SearchFragment;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, searchFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment).commit();
 
         binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override

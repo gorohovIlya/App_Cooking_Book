@@ -17,6 +17,10 @@ public class Hits {
             return label;
         }
 
+        public void setLabel(String label) {
+            this.label = label;
+        }
+
         public String getImage() {
             return image;
         }
@@ -35,6 +39,10 @@ public class Hits {
 
         public ArrayList<String> getIngredientLines() {
             return ingredientLines;
+        }
+
+        public void setIngredientLines(ArrayList<String> ingredientLines) {
+            this.ingredientLines = ingredientLines;
         }
 
         public String getUrl() {
