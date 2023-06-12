@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/image_recipe_note"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:id="@+id/note_img"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:layout_gravity="center"
         android:text="@string/note_name"
-        android:layout_marginStart="10dp"
+
         android:textColor="@color/black"
         android:textSize="24sp"
         android:id="@+id/item_name"/>
+
+    <Button
+        android:id="@+id/view_note_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:text="VIEW NOTE" />
 
 </LinearLayout>

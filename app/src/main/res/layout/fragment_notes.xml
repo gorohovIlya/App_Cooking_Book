@@ -27,10 +27,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFF6A7">
-            <ListView
+
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recipe_notes"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+ />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

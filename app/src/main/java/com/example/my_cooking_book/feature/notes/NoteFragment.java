@@ -1,6 +1,7 @@
 package com.example.my_cooking_book.feature.notes;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -27,6 +28,7 @@ public class NoteFragment extends Fragment {
     RecipeNote recipeNote;
     Button deleteBtn;
     Button toPrevFragBtn;
+    Button chooseImgBtn;
 
     public NoteFragment(RecipeNote recipeNote) {
         this.recipeNote = recipeNote;
@@ -43,6 +45,7 @@ public class NoteFragment extends Fragment {
         note_name = view.findViewById(R.id.note_name);
         deleteBtn = view.findViewById(R.id.deleteBtn);
         toPrevFragBtn = view.findViewById(R.id.toPrevFragBtn);
+        chooseImgBtn = view.findViewById(R.id.choose_img);
 
         note_name.setText(recipeNote.getRecipeNote_name());
         note_ingredients.setText(recipeNote.getRecipeNote_ingreds());
@@ -70,5 +73,6 @@ public class NoteFragment extends Fragment {
         });
 
         return view;
+
     }
 }
