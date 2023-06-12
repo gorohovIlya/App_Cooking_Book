@@ -19,6 +19,10 @@ public class Repository {
         return RecipesApiService.getInstance().getRecipes(ingredient, RetrofitRecipeService.APP_ID, RetrofitRecipeService.APP_KEY, 100);
     }
 
+    public static Call<RecipeResponse> getRecipesByTime(String ingredient, String time) {
+        return RecipesApiService.getInstance().getRecipesByTime(ingredient, RetrofitRecipeService.APP_ID, RetrofitRecipeService.APP_KEY, 100, time);
+    }
+
     public static Call<TranslateResponse> getTranslate(String aimToken, TranslateBody translateBody){
         return TranslateApiService.getInstance().getTranslate("Bearer " + aimToken, translateBody);
     }

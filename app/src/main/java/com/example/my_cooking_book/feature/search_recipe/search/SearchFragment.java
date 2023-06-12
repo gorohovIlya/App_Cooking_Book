@@ -5,20 +5,18 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.SimpleAdapter;
+import android.widget.CompoundButton;
 
 import com.example.my_cooking_book.R;
-import com.example.my_cooking_book.data.parse.translate.body.TranslateBody;
 import com.example.my_cooking_book.databinding.FragmentSearchBinding;
 import com.example.my_cooking_book.domain.model.recipe.Hits;
 import com.example.my_cooking_book.feature.search_recipe.recipe.RecipeFragment;
-import com.squareup.picasso.Picasso;
+import com.example.my_cooking_book.feature.search_recipe.search.recycler.RecipesRecyclerAdapter;
 
 import java.util.ArrayList;
 
@@ -27,8 +25,7 @@ public class SearchFragment extends Fragment {
     ArrayList<Hits> listRecipes = new ArrayList<>();
     private String addIngredientText = "";
 
-    TranslateBody translateBody = new TranslateBody();
-
+    private RecipesRecyclerAdapter adapter;
     private FragmentSearchBinding binding;
 
     @Override
@@ -44,35 +41,22 @@ public class SearchFragment extends Fragment {
         }
 
         if (listRecipes != null) {
-            SimpleAdapter adapter = new SimpleAdapter(view.getContext(),
-                    SimpleRecipeAdapter.createDataListForAdapter(listRecipes),
-                    R.layout.item_list_recipes,
-                    SimpleRecipeAdapter.createFromForAdapter(),
-                    SimpleRecipeAdapter.createToForAdapter());
-            adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
-                @Override
-                public boolean setViewValue(View view, Object data, String textRepresentation) {
-                    if (view.getId() == R.id.image_item) {
-                        Picasso.get().load(data.toString()).into((ImageView) view);
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-            });
-            binding.listRecipes.setAdapter(adapter);
+            binding.recipesRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+            adapter = new RecipesRecyclerAdapter(listRecipes);
+            binding.recipesRecyclerView.setAdapter(adapter);
         }
         binding.btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BindSearchAdapter.translateIngredsToApi(binding.addIngredients.getText().toString(),
+                BindSearchAdapter.checkBoxToBind(binding.addIngredients.getText().toString(),
+                        binding.etTime.getText().toString(),
                         listRecipes, binding, view);
             }
         });
 
-        binding.listRecipes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void OnItemClick(int position) {
                 RecipeFragment recipeFragment = new RecipeFragment(
                         listRecipes.get(position).getRecipe().getImage(),
                         listRecipes.get(position).getRecipe().getLabel(),
@@ -107,6 +91,23 @@ public class SearchFragment extends Fragment {
                 binding.addIngredients.setText("");
                 binding.btnDeleteIcon.setVisibility(View.GONE);
                 addIngredientText = "";
+            }
+        });
+
+        binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    binding.tvCalories.setVisibility(View.VISIBLE);
+                    binding.tvTime.setVisibility(View.VISIBLE);
+                    binding.linearCalories.setVisibility(View.VISIBLE);
+                    binding.linearTime.setVisibility(View.VISIBLE);
+                }else{
+                    binding.tvCalories.setVisibility(View.GONE);
+                    binding.tvTime.setVisibility(View.GONE);
+                    binding.linearCalories.setVisibility(View.GONE);
+                    binding.linearTime.setVisibility(View.GONE);
+                }
             }
         });
 

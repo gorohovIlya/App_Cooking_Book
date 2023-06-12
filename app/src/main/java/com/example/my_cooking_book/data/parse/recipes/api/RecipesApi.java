@@ -14,4 +14,11 @@ public interface RecipesApi {
                                     @Query("app_id") String app_id,
                                     @Query("app_key") String app_key,
                                     @Query("to") int to);
+
+    @GET("/search")
+    Call<RecipeResponse> getRecipesByTime(@Query("q") String ingredient,
+                                    @Query("app_id") String app_id,
+                                    @Query("app_key") String app_key,
+                                    @Query("to") int to,
+                                          @Query("time") String time);
 }

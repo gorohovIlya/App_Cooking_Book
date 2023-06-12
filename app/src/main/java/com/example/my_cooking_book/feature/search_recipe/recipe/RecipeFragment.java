@@ -19,7 +19,6 @@ import com.example.my_cooking_book.data.parse.translate.response.TranslateRespon
 import com.example.my_cooking_book.data.parse.services.RetrofitTranslateService;
 import com.example.my_cooking_book.data.repository.Repository;
 import com.example.my_cooking_book.databinding.FragmentRecipeBinding;
-import com.example.my_cooking_book.feature.search_recipe.recipe.IngredientAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ public class RecipeFragment extends Fragment {
     String url;
     ArrayList<String> ingredientsLines;
 
-    private IngredientAdapter adapter;
+    private IngredientRecyclerAdapter adapter;
     private FragmentRecipeBinding binding;
 
     public RecipeFragment(String imageUrl, String label, String calories, String totalWeight, String totalTime, String url, ArrayList<String> ingredientsLines) {
@@ -55,7 +54,7 @@ public class RecipeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentRecipeBinding.inflate(inflater, container, false);
-        View v = binding.getRoot();
+        View view = binding.getRoot();
 
         TranslateBody translateBody = new TranslateBody();
         translateBody.texts = new String[ingredientsLines.size()];
@@ -86,11 +85,11 @@ public class RecipeFragment extends Fragment {
                     Linkify.addLinks(binding.webUrl, Linkify.WEB_URLS);
                     binding.webUrl.setMovementMethod(LinkMovementMethod.getInstance());
 
-                    binding.ingredientRecyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
-                    adapter = new IngredientAdapter(ingredientsLines);
+                    binding.ingredientRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                    adapter = new IngredientRecyclerAdapter(ingredientsLines);
                     binding.ingredientRecyclerView.setAdapter(adapter);
                 }else
-                    Toast.makeText(v.getContext(),
+                    Toast.makeText(view.getContext(),
                             "Токен не получен " + response.code(), Toast.LENGTH_LONG).show();
             }
 
@@ -108,7 +107,7 @@ public class RecipeFragment extends Fragment {
             }
         });
 
-        return v;
+        return view;
     }
 
     @Override

@@ -12,10 +12,10 @@ import com.example.my_cooking_book.R;
 
 import java.util.ArrayList;
 
-public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder> {
+public class IngredientRecyclerAdapter extends RecyclerView.Adapter<IngredientRecyclerAdapter.ViewHolder> {
     private ArrayList<String> data;
 
-    public IngredientAdapter(ArrayList<String> data) {
+    public IngredientRecyclerAdapter(ArrayList<String> data) {
         this.data = data;
     }
 
