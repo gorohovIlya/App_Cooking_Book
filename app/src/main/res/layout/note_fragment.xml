@@ -19,19 +19,27 @@
         android:id="@+id/note_name"/>
 
     <ImageView
-        android:layout_marginStart="15dp"
+        android:id="@+id/dish_picture"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:id="@+id/dish_picture"
-        android:src="@drawable/image_recipe_note"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:layout_gravity="center_horizontal"/>
+        android:src="@drawable/image_recipe_note" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/choose_img"
+        android:text="choose image"
+        android:layout_marginTop="12dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:text="@string/ingredients1"
+        android:text="@string/ingredients"
         android:layout_marginStart="15dp"
         android:textSize="25sp"
         android:textColor="#000000"
