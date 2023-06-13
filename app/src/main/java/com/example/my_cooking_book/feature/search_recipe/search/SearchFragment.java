@@ -16,6 +16,7 @@ import com.example.my_cooking_book.R;
 import com.example.my_cooking_book.databinding.FragmentSearchBinding;
 import com.example.my_cooking_book.domain.model.recipe.Hits;
 import com.example.my_cooking_book.feature.search_recipe.recipe.RecipeFragment;
+import com.example.my_cooking_book.feature.search_recipe.search.recycler.OnItemClickListener;
 import com.example.my_cooking_book.feature.search_recipe.search.recycler.RecipesRecyclerAdapter;
 
 import java.util.ArrayList;

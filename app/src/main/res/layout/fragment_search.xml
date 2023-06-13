@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".feature.search_recipe.search.SearchFragment"
-        android:background="@color/beige"
-        >
+        android:background="@color/beige">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -27,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
+            android:textIsSelectable="true"
             android:text="@string/title_search_text"
             android:textColor="@color/red"
             android:textSize="30sp"
