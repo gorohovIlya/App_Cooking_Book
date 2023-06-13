@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.my_cooking_book.data.db.DbHelper;
 import com.example.my_cooking_book.data.parse.translate.body.TranslateBody;
 import com.example.my_cooking_book.data.parse.translate.response.TranslateResponse;
 import com.example.my_cooking_book.data.parse.services.RetrofitTranslateService;
@@ -39,6 +40,7 @@ public class RecipeFragment extends Fragment {
 
     private IngredientRecyclerAdapter adapter;
     private FragmentRecipeBinding binding;
+    private DbHelper dbHelper;
 
     public RecipeFragment(String imageUrl, String label, String calories, String totalWeight, String totalTime, String url, ArrayList<String> ingredientsLines) {
         this.imageUrl = imageUrl;
@@ -94,9 +96,7 @@ public class RecipeFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<TranslateResponse> call, Throwable t) {
-
-            }
+            public void onFailure(Call<TranslateResponse> call, Throwable t) {}
         });
 
         binding.backButton.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +104,15 @@ public class RecipeFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fm = requireActivity().getSupportFragmentManager();
                 fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }
+        });
+
+        binding.addFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHelper = new DbHelper(view.getContext());
+                dbHelper.addFavRecipe(imageUrl, label, String.valueOf(calories), String.valueOf(totalTime),
+                        String.valueOf(totalWeight), url);
             }
         });
 

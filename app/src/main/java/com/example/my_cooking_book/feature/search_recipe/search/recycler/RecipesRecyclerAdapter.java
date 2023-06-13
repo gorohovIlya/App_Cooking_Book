@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.my_cooking_book.R;
 import com.example.my_cooking_book.domain.model.recipe.Hits;
-import com.example.my_cooking_book.feature.search_recipe.search.OnItemClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -43,14 +42,14 @@ public class RecipesRecyclerAdapter extends RecyclerView.Adapter<RecipesRecycler
 
     @NonNull
     @Override
-    public RecipesRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_recipes, parent, false);
         RecipesRecyclerAdapter.ViewHolder viewHolder = new RecipesRecyclerAdapter.ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecipesRecyclerAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String imageUrl = data.get(position).getRecipe().getImage();
         Picasso.get().load(imageUrl).into(holder.imageRecipe);
 

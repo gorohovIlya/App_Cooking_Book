@@ -1,4 +1,4 @@
-package com.example.my_cooking_book.feature.home;
+package com.example.my_cooking_book.feature.home.info;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
