@@ -1,45 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/beige">
-
-    <ImageButton
-        android:layout_width="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_info_icon"
-        android:background="@color/beige"
-        android:src="@drawable/info_icon"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:background="@color/beige">
 
-    <ImageView
-        android:id="@+id/cook_img"
-        android:layout_width="500dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/my_cookbook"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_info_icon"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_info_icon"
+            android:background="@color/beige"
+            android:src="@drawable/info_icon"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
-    <TextView
-        android:id="@+id/tv_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cook_img"
-        android:layout_marginTop="20dp"
-        android:text="@string/my_cooking_book_text"
-        android:textColor="@color/red"
-        android:textSize="30sp"
-        android:textStyle="bold|italic"
-        android:gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="@id/cook_img"
-        app:layout_constraintStart_toStartOf="@id/cook_img"
-        app:layout_constraintTop_toBottomOf="@id/cook_img"/>
+        <ImageView
+            android:id="@+id/cook_img"
+            android:layout_width="500dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/my_cookbook"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_info_icon"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cook_img"
+            android:layout_marginTop="20dp"
+            android:text="@string/my_cooking_book_text"
+            android:textColor="@color/red"
+            android:textSize="30sp"
+            android:textStyle="bold|italic"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="@id/cook_img"
+            app:layout_constraintStart_toStartOf="@id/cook_img"
+            app:layout_constraintTop_toBottomOf="@id/cook_img"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            app:cardElevation="10dp"
+            app:cardCornerRadius="26dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_home"
+            app:layout_constraintStart_toStartOf="@+id/tv_home"
+            app:layout_constraintTop_toBottomOf="@+id/tv_home">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFF6A7">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/fav_recipes_recycler_view"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

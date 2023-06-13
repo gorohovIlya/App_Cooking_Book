@@ -1,132 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".feature.search_recipe.SearchFragment"
-    android:background="@color/beige"
-    android:alpha="1">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_search"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/cooking_photo"
-        />
-
-    <TextView
-        android:id="@+id/title_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:text="@string/title_search_text"
-        android:textColor="@color/red"
-        android:textSize="30sp"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold|italic"
-        app:layout_constraintTop_toBottomOf="@+id/image_search"
-        app:layout_constraintEnd_toEndOf="@+id/image_search"
-        app:layout_constraintStart_toStartOf="@+id/image_search" />
-
-    <EditText
-        android:id="@+id/et_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        android:hint="@string/et_enter_ingr"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@id/title_search"
-        app:layout_constraintStart_toStartOf="@id/title_search"
-        app:layout_constraintTop_toBottomOf="@+id/title_search" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/add_ingredients"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/et_search"
-        app:layout_constraintStart_toStartOf="@+id/et_search"
-        app:layout_constraintTop_toBottomOf="@+id/et_search" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_delete_icon"
-        android:background="@color/beige"
-        android:visibility="gone"
-        android:src="@drawable/delete_icon"
-        app:layout_constraintBottom_toTopOf="@+id/linear_buttons"
-        app:layout_constraintStart_toEndOf="@+id/add_ingredients"
-        app:layout_constraintTop_toBottomOf="@+id/et_search" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/linear_buttons"
-        app:layout_constraintEnd_toEndOf="@+id/add_ingredients"
-        app:layout_constraintStart_toStartOf="@+id/add_ingredients"
-        app:layout_constraintTop_toBottomOf="@+id/add_ingredients"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/btn_add"
-            android:minHeight="48dp" />
-        <Button
-            android:id="@+id/btn_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp"
-            android:text="@string/btn_search"
-            android:minHeight="48dp" />
-    </LinearLayout>
-
-    <androidx.cardview.widget.CardView
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="320dp"
-        android:id="@+id/card_recipes"
-        app:cardElevation="10dp"
-        app:cardCornerRadius="26dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/linear_buttons"
-        app:layout_constraintStart_toStartOf="@+id/linear_buttons"
-        app:layout_constraintTop_toBottomOf="@+id/linear_buttons">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFF6A7">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColor="@color/black"
-                android:id="@+id/text_no_recipes"
-                android:visibility="gone"
-                android:gravity="center"
-                android:text="Рецептов с такими ингредиентами нет"/>
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/list_recipes" />
-        </LinearLayout>
-        <ProgressBar
-            android:id="@+id/progress_bar"
+        android:layout_height="wrap_content"
+        tools:context=".feature.search_recipe.search.SearchFragment"
+        android:background="@color/beige">
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateTint="@color/beige"
+            android:id="@+id/image_search"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/cooking_photo"
+            />
+
+        <TextView
+            android:id="@+id/title_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:textIsSelectable="true"
+            android:text="@string/title_search_text"
+            android:textColor="@color/red"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold|italic"
+            app:layout_constraintTop_toBottomOf="@+id/image_search"
+            app:layout_constraintEnd_toEndOf="@+id/image_search"
+            app:layout_constraintStart_toStartOf="@+id/image_search" />
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/et_enter_ingr"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@id/title_search"
+            app:layout_constraintStart_toStartOf="@id/title_search"
+            app:layout_constraintTop_toBottomOf="@+id/title_search" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_ingredients"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/et_search"
+            app:layout_constraintStart_toStartOf="@+id/et_search"
+            app:layout_constraintTop_toBottomOf="@+id/et_search" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_delete_icon"
+            android:background="@color/beige"
             android:visibility="gone"
-            android:layout_gravity="center"/>
-    </androidx.cardview.widget.CardView>
+            android:src="@drawable/delete_icon"
+            app:layout_constraintBottom_toTopOf="@+id/linear_buttons"
+            app:layout_constraintStart_toEndOf="@+id/add_ingredients"
+            app:layout_constraintTop_toBottomOf="@+id/et_search" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear_buttons"
+            app:layout_constraintEnd_toEndOf="@+id/add_ingredients"
+            app:layout_constraintStart_toStartOf="@+id/add_ingredients"
+            app:layout_constraintTop_toBottomOf="@+id/add_ingredients"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/btn_add"
+                android:minHeight="48dp" />
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/btn_search"
+                android:minHeight="48dp" />
+        </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linear_option"
+            app:layout_constraintTop_toBottomOf="@+id/linear_buttons"
+            app:layout_constraintEnd_toEndOf="@+id/linear_buttons"
+            app:layout_constraintStart_toStartOf="@+id/linear_buttons" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Доп. опции"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/check_box" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_calories"
+            android:text="Калории:"
+            android:textColor="@color/red"
+            android:textSize="30sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="@+id/linear_option"
+            app:layout_constraintStart_toStartOf="@+id/linear_option"
+            app:layout_constraintTop_toBottomOf="@+id/linear_option"
+            android:visibility="gone"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear_calories"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/tv_calories"
+            app:layout_constraintStart_toStartOf="@+id/tv_calories"
+            app:layout_constraintTop_toBottomOf="@+id/tv_calories"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/et_from_calories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="от"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/et_to_calories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="до" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ккал"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_time"
+            android:text="Время:"
+            android:textColor="@color/red"
+            android:textSize="30sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="@+id/linear_calories"
+            app:layout_constraintStart_toStartOf="@+id/linear_calories"
+            app:layout_constraintTop_toBottomOf="@+id/linear_calories"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear_time"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/tv_time"
+            app:layout_constraintStart_toStartOf="@+id/tv_time"
+            app:layout_constraintTop_toBottomOf="@+id/tv_time"
+            android:visibility="gone">
+            <EditText
+                android:id="@+id/et_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Диапазон через (-)"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="@+id/tv_time"
+                app:layout_constraintStart_toStartOf="@+id/tv_time"
+                app:layout_constraintTop_toBottomOf="@+id/tv_time"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="мин"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:id="@+id/card_recipes"
+            app:cardElevation="10dp"
+            app:cardCornerRadius="26dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/linear_time"
+            app:layout_constraintStart_toStartOf="@+id/linear_time"
+            app:layout_constraintTop_toBottomOf="@+id/linear_time">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFF6A7">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:id="@+id/text_no_recipes"
+                    android:visibility="gone"
+                    android:gravity="center"
+                    android:text="Таких рецептов нет"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/recipes_recycler_view"/>
+            </LinearLayout>
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/beige"
+                android:visibility="gone"
+                android:layout_gravity="center"/>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

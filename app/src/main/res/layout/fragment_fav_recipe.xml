@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/beige">
+        <ImageView
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:id="@+id/image_recipe_fav"
+            android:src="@drawable/ic_launcher_foreground"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/title_recipe_fav"
+            android:textSize="30sp"
+            android:textColor="@color/red"
+            android:text="Название"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold|italic"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Калории:"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/red" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/calories_fav"
+            android:text="Калории"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="#322D2D" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Общее время приготовления:"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/red" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_fav"
+            android:text="Время"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="#322D2D" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Общий вес:"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/red" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/weight_fav"
+            android:text="Вес"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="#322D2D"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/red"
+            android:text="Ссылка на рецепт:"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textStyle="bold|italic" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/web_url_fav"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
+            <ImageButton
+                android:id="@+id/back_button_fav"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@color/beige"
+                android:src="@drawable/arrow_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/delete_fav"
+                android:text="Удалить из любимых"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
