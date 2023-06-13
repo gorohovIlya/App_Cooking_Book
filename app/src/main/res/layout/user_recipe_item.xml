@@ -22,12 +22,6 @@
         android:textSize="24sp"
         android:id="@+id/item_name"/>
 
-    <Button
-        android:id="@+id/view_note_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="52dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="20dp"
-        android:text="VIEW NOTE" />
+
 
 </LinearLayout>

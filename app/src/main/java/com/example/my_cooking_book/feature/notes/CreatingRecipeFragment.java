@@ -1,25 +1,36 @@
 package com.example.my_cooking_book.feature.notes;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.my_cooking_book.R;
 import com.example.my_cooking_book.data.db.DbHelper;
 
 public class CreatingRecipeFragment extends Fragment {
+
+    ImageView addRecipeImg;
+    Button addRecipeImgBtn;
     EditText recipe_name;
     EditText ingredients;
     EditText how_to_prepare;
     Button create_recipe;
+    String addRecipeImgUri;
 
     DbHelper dbHelper;
 
@@ -32,15 +43,18 @@ public class CreatingRecipeFragment extends Fragment {
         ingredients = view.findViewById(R.id.ingreds);
         how_to_prepare = view.findViewById(R.id.how_to_prepare);
         create_recipe = (Button) view.findViewById(R.id.create_recipe);
+        addRecipeImg = view.findViewById(R.id.addRecipeImg);
+
         dbHelper = new DbHelper(view.getContext());
 
         create_recipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DbHelper dbHelper = new DbHelper(view.getContext());
-                dbHelper.addRecipe(recipe_name.getText().toString().trim(),
-                        ingredients.getText().toString().trim(),
-                        how_to_prepare.getText().toString().trim());
+
+                    dbHelper.addRecipe(recipe_name.getText().toString().trim(),
+                            ingredients.getText().toString().trim(),
+                            how_to_prepare.getText().toString().trim());
 
                 NotesListFragment notesListFragment = new NotesListFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -52,4 +66,5 @@ public class CreatingRecipeFragment extends Fragment {
 
         return view;
     }
+
 }

@@ -2,6 +2,7 @@ package com.example.my_cooking_book.feature.notes;
 
 import android.annotation.SuppressLint;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,13 +21,15 @@ import android.widget.Toast;
 
 import com.example.my_cooking_book.R;
 import com.example.my_cooking_book.data.db.DbHelper;
+import com.example.my_cooking_book.domain.model.recipe.RecipeNote;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class NotesListFragment extends Fragment{
 
-    RecyclerView user_recipes;
+    ListView user_recipes;
     Button recipe_add;
 
     DbHelper dbHelper;
@@ -34,11 +37,7 @@ public class NotesListFragment extends Fragment{
     ArrayList<String> recipe_name;
     ArrayList<String> recipe_ingreds;
     ArrayList<String> recipe_way_of_prep;
-  
-    SQLiteDatabase sdb;
-    Cursor cursor;
-    LinkedList<RecipeNote> listNotes;
-    RecipeNotesAdapter recipeNotesAdapter;
+
 
     @SuppressLint({"MissingInflatedId", "Range"})
     @Override
@@ -69,20 +68,7 @@ public class NotesListFragment extends Fragment{
         SimpleAdapter adapter = new SimpleAdapter(view.getContext(), dataList,
                 R.layout.user_recipe_item, from, to);
         user_recipes.setAdapter(adapter);
-        }
-//        ArrayList<HashMap<String, Object>> dataList = new ArrayList<>();
-//        for (int i = 0; i < listNotes.size(); i++) {
-//            HashMap<String, Object> map = new HashMap<>();
-//            map.put("name", listNotes.get(i).getRecipeNote_name());
-//            map.put("ingreds", listNotes.get(i).getRecipeNote_ingreds());
-//            map.put("way_of_prep", listNotes.get(i).getRecipeNote_instruction());
-//            dataList.add(map);
-//        }
-//        String[] from = {"name"};
-//        int[] to = {R.id.item_name};
-//        SimpleAdapter adapter = new SimpleAdapter(view.getContext(), dataList,
-//                R.layout.user_recipe_item, from, to);
-//        user_recipes.setAdapter(adapter);
+
 
         recipe_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,9 +94,6 @@ public class NotesListFragment extends Fragment{
                 transaction.commit();
             }
         });
-        recipeNotesAdapter = new RecipeNotesAdapter(view.getContext(), listNotes, getFragmentManager());
-        user_recipes.setAdapter(recipeNotesAdapter);
-        user_recipes.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         return view;
     }

@@ -20,6 +20,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "db_recipes.db";
     public static final int DB_VERSION = 1;
 
+
     SQLiteDatabase db;
     Context context;
 
@@ -32,7 +33,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " +
                 TABLE_NAME_1 + " (" + _ID_1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + NAME_OF_RECIPE + " TEXT," +
-                _INGRED + " TEXT," + WAY_OF_PREP + " TEXT)";
+                _INGRED + " TEXT," + WAY_OF_PREP + " TEXT )";
         db.execSQL(query);
     }
 
@@ -77,6 +78,20 @@ public class DbHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Ошибка при удалении", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context, "Удалено успешно.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void updateRecipe(String id_recipe, String name, String ingred, String wayOfPrep) {
+        db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(NAME_OF_RECIPE, name);
+        cv.put(_INGRED, ingred);
+        cv.put(WAY_OF_PREP, wayOfPrep);
+        long result = db.update(DbHelper.TABLE_NAME_1, cv, DbHelper._ID_1 + "=?", new String[]{id_recipe});
+        if (result > 0) {
+            Toast.makeText(context, "Изменения сохранены", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Ошибка при редактировании", Toast.LENGTH_SHORT).show();
         }
     }
 }
