@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,47 +13,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:text="@string/adding_a_recipe"
+        android:gravity="center_horizontal"
+        android:text="@string/updateRecipe"
         android:textSize="22sp" />
 
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_gravity="center_horizontal"
+        android:id="@+id/updateRecipeImg"
         android:src="@drawable/image_recipe_note"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:id="@+id/addRecipeImg"/>
+        android:layout_marginBottom="15dp"/>
 
 
 
     <EditText
-        android:id="@+id/recipe_name"
+        android:id="@+id/update_recipe_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/recipe_name"
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/ingreds"
+        android:id="@+id/update_ingreds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:hint="@string/ingredients" />
 
     <EditText
-        android:id="@+id/how_to_prepare"
+        android:id="@+id/update_how_to_prepare"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:hint="@string/how_to_prepare" />
 
     <Button
-        android:id="@+id/create_recipe"
+        android:id="@+id/update_recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/add" />
+        android:text="@string/save_changes" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/back"
+        android:id="@+id/toNoteFragBtn"/>
 
 </LinearLayout>

@@ -27,13 +27,6 @@
         android:layout_marginTop="15dp"
         android:src="@drawable/image_recipe_note" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/choose_img"
-        android:text="choose image"
-        android:layout_marginTop="12dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -86,7 +79,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="192dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/update"
+            android:id="@+id/toUpdateFragBtn"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:text="@string/delete"
             android:id="@+id/deleteBtn"/>
 
