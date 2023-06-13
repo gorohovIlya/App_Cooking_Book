@@ -19,6 +19,7 @@ import com.example.my_cooking_book.databinding.FragmentFavRecipeBinding;
 import com.squareup.picasso.Picasso;
 
 public class FavRecipeFragment extends Fragment {
+
     String id;
     String imageUrl;
     String label;

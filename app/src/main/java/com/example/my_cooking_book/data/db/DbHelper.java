@@ -59,37 +59,37 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addRecipe(String name, String ingred, String wayOfPrep){
+    public void addRecipe(String name, String ingred, String wayOfPrep) {
         db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(NAME_OF_RECIPE, name);
         cv.put(_INGRED, ingred);
         cv.put(WAY_OF_PREP, wayOfPrep);
         long result = db.insert(TABLE_NAME_1, null, cv);
-        if(result == -1){
+        if (result == -1) {
             Toast.makeText(context, "Ошибка при добавлении", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             Toast.makeText(context, "Добавлено успешно!", Toast.LENGTH_SHORT).show();
         }
         db.close();
     }
 
-    public Cursor readAllDataOfRecipes(){
+    public Cursor readAllDataOfRecipes() {
         String query = "SELECT * FROM " + TABLE_NAME_1;
         db = this.getReadableDatabase();
         Cursor cursor = null;
-        if(db != null){
+        if (db != null) {
             cursor = db.rawQuery(query, null);
         }
         return cursor;
     }
 
-    public void deleteOneRecipe(String id_recipe){
+    public void deleteOneRecipe(String id_recipe) {
         db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME_1, _ID_1 + "=?", new String[]{id_recipe});
-        if(result == -1){
+        if (result == -1) {
             Toast.makeText(context, "Ошибка при удалении", Toast.LENGTH_SHORT).show();
-        }else{
+        } else {
             Toast.makeText(context, "Удалено успешно.", Toast.LENGTH_SHORT).show();
         }
     }
@@ -105,8 +105,11 @@ public class DbHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Изменения сохранены", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Ошибка при редактировании", Toast.LENGTH_SHORT).show();
+        }
+    }
 
-    public void addFavRecipe(String image, String name, String calories, String time, String weight, String url){
+    public void addFavRecipe (String image, String name, String calories, String
+            time, String weight, String url){
         db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(IMAGE_OF_FAV_RECIPE, image);
@@ -116,30 +119,30 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put(WEIGHT, weight);
         cv.put(URL, url);
         long result = db.insert(TABLE_NAME_2, null, cv);
-        if(result == -1){
+        if (result == -1) {
             Toast.makeText(context, "Ошибка при добавлении", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             Toast.makeText(context, "Добавлено успешно!", Toast.LENGTH_SHORT).show();
         }
         db.close();
     }
 
-    public Cursor readAllDataOfFavRecipes(){
+    public Cursor readAllDataOfFavRecipes () {
         String query = "SELECT * FROM " + TABLE_NAME_2;
         db = this.getReadableDatabase();
         Cursor cursor = null;
-        if(db != null){
+        if (db != null) {
             cursor = db.rawQuery(query, null);
         }
         return cursor;
     }
 
-    public void deleteOneFavRecipe(String id_recipe){
+    public void deleteOneFavRecipe (String id_recipe){
         db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME_2, _ID_2 + "=?", new String[]{id_recipe});
-        if(result == -1){
+        if (result == -1) {
             Toast.makeText(context, "Ошибка при удалении", Toast.LENGTH_SHORT).show();
-        }else{
+        } else {
             Toast.makeText(context, "Удалено успешно.", Toast.LENGTH_SHORT).show();
         }
     }

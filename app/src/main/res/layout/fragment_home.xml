@@ -60,6 +60,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#FFF6A7">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Любимые рецепты"
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:textSize="26sp"
+                    android:textStyle="bold|italic"/>
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

@@ -21,11 +21,9 @@ import android.widget.Toast;
 
 import com.example.my_cooking_book.R;
 import com.example.my_cooking_book.data.db.DbHelper;
-import com.example.my_cooking_book.domain.model.recipe.RecipeNote;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public class NotesListFragment extends Fragment{
 
@@ -33,6 +31,7 @@ public class NotesListFragment extends Fragment{
     Button recipe_add;
 
     DbHelper dbHelper;
+
     ArrayList<String> recipe_id;
     ArrayList<String> recipe_name;
     ArrayList<String> recipe_ingreds;
@@ -45,7 +44,7 @@ public class NotesListFragment extends Fragment{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_notes, container, false);
         user_recipes = view.findViewById(R.id.recipe_notes);
-        recipe_add = (Button) view.findViewById(R.id.add_recipe);
+        recipe_add = view.findViewById(R.id.add_recipe);
 
         dbHelper = new DbHelper(view.getContext());
         recipe_id = new ArrayList<>();

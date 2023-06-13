@@ -38,6 +38,8 @@ public class NoteUpdateFragment extends Fragment {
     String recipe_id;
     String image_uri;
 
+    DbHelper dbhelper;
+
     public NoteUpdateFragment(String nameUpdate, String ingredsUpdate, String wayOfPrepUpdate, String recipe_id, String image_uri) {
         this.nameUpdate = nameUpdate;
         this.ingredsUpdate = ingredsUpdate;
@@ -62,21 +64,16 @@ public class NoteUpdateFragment extends Fragment {
         updateIngredients.setText(ingredsUpdate);
         updateWayOfPrep.setText(wayOfPrepUpdate);
 
-
         updateRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DbHelper dbhelper = new DbHelper(getContext());
+                dbhelper = new DbHelper(getContext());
                 dbhelper.updateRecipe(recipe_id,
                         updateRecipeName.getText().toString(),
                         updateIngredients.getText().toString(),
                         updateWayOfPrep.getText().toString());
-
             }
         });
-
-
-
 
         toNotesFragBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,9 +87,5 @@ public class NoteUpdateFragment extends Fragment {
         });
 
         return view;
-
-
     }
-
-
 }

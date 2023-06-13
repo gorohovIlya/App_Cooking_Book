@@ -44,9 +44,6 @@ import java.util.Objects;
 
 public class NoteFragment extends Fragment {
 
-    private static final int PICK_IMAGE_AVATAR = 100;
-    final int GALLERY_REQUEST = 1;
-
     TextView note_ingredients;
     TextView note_instruction;
     TextView note_name;
@@ -55,6 +52,7 @@ public class NoteFragment extends Fragment {
     Button toPrevFragBtn;
     Button toUpdateFragBtn;
 
+    DbHelper dbHelper;
 
     String id_recipe, name, ingreds, way_of_prep;
 
@@ -117,28 +115,24 @@ public class NoteFragment extends Fragment {
 
     }
 
+    private void confirmDialog () {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Удаление " + name);
+        builder.setMessage("Вы уверены, что хотите удалить " + name + "?");
+        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dbHelper = new DbHelper(getContext());
+                dbHelper.deleteOneRecipe(id_recipe);
+            }
+        });
+        builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-        private void confirmDialog () {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setTitle("Удаление " + name);
-            builder.setMessage("Вы уверены, что хотите удалить " + name + "?");
-            builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    DbHelper dbHelper = new DbHelper(getContext());
-                    dbHelper.deleteOneRecipe(id_recipe);
-                }
-            });
-            builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                }
-            });
-            builder.create().show();
-
-
-        }
-
+            }
+        });
+        builder.create().show();
     }
+}
 
