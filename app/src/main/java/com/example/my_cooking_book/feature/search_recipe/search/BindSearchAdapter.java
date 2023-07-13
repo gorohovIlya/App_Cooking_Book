@@ -49,20 +49,22 @@ public class BindSearchAdapter {
     static void translateIngredsByCaloriesAndTimeToApi(String ingreds, String time, ArrayList<Hits> listRecipes, FragmentSearchBinding binding, View view){
         if (!binding.addIngredients.getText().toString().equals("")) {
             binding.progressBar.setVisibility(View.VISIBLE);
-            TranslateBody translateBody = createBodyForTranslateIngreds(ingreds);
-            Call<TranslateResponse> translateResponseCall = Repository.getTranslate(RetrofitTranslateService.AIM_TOKEN, translateBody);
-            translateResponseCall.enqueue(new Callback<TranslateResponse>() {
-                @Override
-                public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
-                    if (response.isSuccessful() && response.code() == 200) {
-                        TranslateResponse translateResponse = response.body();
-                        bindRecipesByCaloriesAndTime(translateResponse.translations[0].text, time,
-                                listRecipes, binding, view);
-                    }
-                }
-                @Override
-                public void onFailure(Call<TranslateResponse> call, Throwable t) {}
-            });
+
+            bindRecipesByCaloriesAndTime(ingreds, time, listRecipes, binding, view);
+//            TranslateBody translateBody = createBodyForTranslateIngreds(ingreds);
+//            Call<TranslateResponse> translateResponseCall = Repository.getTranslate(RetrofitTranslateService.AIM_TOKEN, translateBody);
+//            translateResponseCall.enqueue(new Callback<TranslateResponse>() {
+//                @Override
+//                public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
+//                    if (response.isSuccessful() && response.code() == 200) {
+//                        TranslateResponse translateResponse = response.body();
+//                        bindRecipesByCaloriesAndTime(translateResponse.translations[0].text, time,
+//                                listRecipes, binding, view);
+//                    }
+//                }
+//                @Override
+//                public void onFailure(Call<TranslateResponse> call, Throwable t) {}
+//            });
         } else
             Toast.makeText(view.getContext(), "Добавьте ингредиент!", Toast.LENGTH_SHORT).show();
     }
@@ -70,20 +72,22 @@ public class BindSearchAdapter {
     static void translateIngredsByCaloriesToApi(String ingreds, ArrayList<Hits> listRecipes, FragmentSearchBinding binding, View view){
         if (!binding.addIngredients.getText().toString().equals("")) {
             binding.progressBar.setVisibility(View.VISIBLE);
-            TranslateBody translateBody = createBodyForTranslateIngreds(ingreds);
-            Call<TranslateResponse> translateResponseCall = Repository.getTranslate(RetrofitTranslateService.AIM_TOKEN, translateBody);
-            translateResponseCall.enqueue(new Callback<TranslateResponse>() {
-                @Override
-                public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
-                    if (response.isSuccessful() && response.code() == 200) {
-                        TranslateResponse translateResponse = response.body();
-                        bindRecipesByCalories(translateResponse.translations[0].text,
-                                listRecipes, binding, view);
-                    }
-                }
-                @Override
-                public void onFailure(Call<TranslateResponse> call, Throwable t) {}
-            });
+
+            bindRecipesByCalories(ingreds, listRecipes, binding, view);
+//            TranslateBody translateBody = createBodyForTranslateIngreds(ingreds);
+//            Call<TranslateResponse> translateResponseCall = Repository.getTranslate(RetrofitTranslateService.AIM_TOKEN, translateBody);
+//            translateResponseCall.enqueue(new Callback<TranslateResponse>() {
+//                @Override
+//                public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
+//                    if (response.isSuccessful() && response.code() == 200) {
+//                        TranslateResponse translateResponse = response.body();
+//                        bindRecipesByCalories(translateResponse.translations[0].text,
+//                                listRecipes, binding, view);
+//                    }
+//                }
+//                @Override
+//                public void onFailure(Call<TranslateResponse> call, Throwable t) {}
+//            });
         } else
             Toast.makeText(view.getContext(), "Добавьте ингредиент!", Toast.LENGTH_SHORT).show();
     }
@@ -91,20 +95,22 @@ public class BindSearchAdapter {
     static void translateIngredsByTimeToApi(String ingreds, String time, ArrayList<Hits> listRecipes, FragmentSearchBinding binding, View view){
         if (!binding.addIngredients.getText().toString().equals("")) {
             binding.progressBar.setVisibility(View.VISIBLE);
-            TranslateBody translateBody = createBodyForTranslateIngreds(ingreds);
-            Call<TranslateResponse> translateResponseCall = Repository.getTranslate(RetrofitTranslateService.AIM_TOKEN, translateBody);
-            translateResponseCall.enqueue(new Callback<TranslateResponse>() {
-                @Override
-                public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
-                    if (response.isSuccessful() && response.code() == 200) {
-                        TranslateResponse translateResponse = response.body();
-                        bindRecipesByTime(translateResponse.translations[0].text, time,
-                                listRecipes, binding, view);
-                    }
-                }
-                @Override
-                public void onFailure(Call<TranslateResponse> call, Throwable t) {}
-            });
+
+            bindRecipesByTime(ingreds, time, listRecipes, binding, view);
+//            TranslateBody translateBody = createBodyForTranslateIngreds(ingreds);
+//            Call<TranslateResponse> translateResponseCall = Repository.getTranslate(RetrofitTranslateService.AIM_TOKEN, translateBody);
+//            translateResponseCall.enqueue(new Callback<TranslateResponse>() {
+//                @Override
+//                public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
+//                    if (response.isSuccessful() && response.code() == 200) {
+//                        TranslateResponse translateResponse = response.body();
+//                        bindRecipesByTime(translateResponse.translations[0].text, time,
+//                                listRecipes, binding, view);
+//                    }
+//                }
+//                @Override
+//                public void onFailure(Call<TranslateResponse> call, Throwable t) {}
+//            });
         } else
             Toast.makeText(view.getContext(), "Добавьте ингредиент!", Toast.LENGTH_SHORT).show();
     }
@@ -112,20 +118,22 @@ public class BindSearchAdapter {
     static void translateIngredsToApi(String ingreds, ArrayList<Hits> listRecipes, FragmentSearchBinding binding, View view){
         if (!binding.addIngredients.getText().toString().equals("")) {
             binding.progressBar.setVisibility(View.VISIBLE);
-            TranslateBody translateBody = createBodyForTranslateIngreds(ingreds);
-            Call<TranslateResponse> translateResponseCall = Repository.getTranslate(RetrofitTranslateService.AIM_TOKEN, translateBody);
-            translateResponseCall.enqueue(new Callback<TranslateResponse>() {
-                @Override
-                public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
-                    if (response.isSuccessful() && response.code() == 200) {
-                        TranslateResponse translateResponse = response.body();
-                        bindRecipes(translateResponse.translations[0].text,
-                                listRecipes, binding, view);
-                    }
-                }
-                @Override
-                public void onFailure(Call<TranslateResponse> call, Throwable t) {}
-            });
+
+            bindRecipes(ingreds, listRecipes, binding, view);
+//            TranslateBody translateBody = createBodyForTranslateIngreds(ingreds);
+//            Call<TranslateResponse> translateResponseCall = Repository.getTranslate(RetrofitTranslateService.AIM_TOKEN, translateBody);
+//            translateResponseCall.enqueue(new Callback<TranslateResponse>() {
+//                @Override
+//                public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
+//                    if (response.isSuccessful() && response.code() == 200) {
+//                        TranslateResponse translateResponse = response.body();
+//                        bindRecipes(translateResponse.translations[0].text,
+//                                listRecipes, binding, view);
+//                    }
+//                }
+//                @Override
+//                public void onFailure(Call<TranslateResponse> call, Throwable t) {}
+//            });
         } else
             Toast.makeText(view.getContext(), "Добавьте ингредиент!", Toast.LENGTH_SHORT).show();
     }
@@ -147,7 +155,12 @@ public class BindSearchAdapter {
                         binding.textNoRecipes.setVisibility(View.GONE);
                         binding.recipesRecyclerView.setVisibility(View.VISIBLE);
                         binding.progressBar.setVisibility(View.VISIBLE);
-                        translateRecipes(listRecipes, binding, view);
+
+                        binding.recipesRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                        adapter = new RecipesRecyclerAdapter(listRecipes);
+                        binding.recipesRecyclerView.setAdapter(adapter);
+                        binding.progressBar.setVisibility(View.GONE);
+//                        translateRecipes(listRecipes, binding, view);
                     }
                 }
             }
@@ -173,7 +186,12 @@ public class BindSearchAdapter {
                         binding.textNoRecipes.setVisibility(View.GONE);
                         binding.recipesRecyclerView.setVisibility(View.VISIBLE);
                         binding.progressBar.setVisibility(View.VISIBLE);
-                        translateRecipes(listRecipes, binding, view);
+
+                        binding.recipesRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                        adapter = new RecipesRecyclerAdapter(listRecipes);
+                        binding.recipesRecyclerView.setAdapter(adapter);
+                        binding.progressBar.setVisibility(View.GONE);
+//                        translateRecipes(listRecipes, binding, view);
                     }
                 }
             }
@@ -199,7 +217,12 @@ public class BindSearchAdapter {
                         binding.textNoRecipes.setVisibility(View.GONE);
                         binding.recipesRecyclerView.setVisibility(View.VISIBLE);
                         binding.progressBar.setVisibility(View.VISIBLE);
-                        translateRecipes(listRecipes, binding, view);
+
+                        binding.recipesRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                        adapter = new RecipesRecyclerAdapter(listRecipes);
+                        binding.recipesRecyclerView.setAdapter(adapter);
+                        binding.progressBar.setVisibility(View.GONE);
+//                        translateRecipes(listRecipes, binding, view);
                     }
                 }
             }
@@ -227,7 +250,11 @@ public class BindSearchAdapter {
                         binding.recipesRecyclerView.setVisibility(View.VISIBLE);
                         binding.progressBar.setVisibility(View.VISIBLE);
 
-                        translateRecipes(listRecipes, binding, view);
+                        binding.recipesRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                        adapter = new RecipesRecyclerAdapter(listRecipes);
+                        binding.recipesRecyclerView.setAdapter(adapter);
+                        binding.progressBar.setVisibility(View.GONE);
+//                        translateRecipes(listRecipes, binding, view);
                     }
                 }
             }
@@ -236,42 +263,42 @@ public class BindSearchAdapter {
         });
     }
 
-    static void translateRecipes(ArrayList<Hits> listRecipes, FragmentSearchBinding binding, View view){
-        TranslateBody translateBody = new TranslateBody();
-        translateBody.texts = new String[listRecipes.size()];
-        for (int i = 0; i < listRecipes.size(); i++) {
-            translateBody.texts[i] = listRecipes.get(i).getRecipe().getLabel();
-        }
-        translateBody.targetLanguageCode = "ru";
-
-        Call<TranslateResponse> responseTranslateCall = Repository.getTranslate(RetrofitTranslateService.AIM_TOKEN, translateBody);
-        responseTranslateCall.enqueue(new Callback<TranslateResponse>() {
-            @Override
-            public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
-                if(response.isSuccessful() && response.code() == 200){
-                    TranslateResponse translateResponse = response.body();
-
-                    for (int i = 0; i < translateResponse.translations.length; i++) {
-                        listRecipes.get(i).getRecipe().setLabel(translateResponse.translations[i].text);
-                    }
-
-                    binding.recipesRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-                    adapter = new RecipesRecyclerAdapter(listRecipes);
-                    binding.recipesRecyclerView.setAdapter(adapter);
-                    binding.progressBar.setVisibility(View.GONE);
-
-                }else
-                    Toast.makeText(view.getContext(),
-                            "Токен не получен " + response.code(), Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onFailure(Call<TranslateResponse> call, Throwable t) {
-                Toast.makeText(view.getContext(),
-                        "Токен не получен " + t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-    }
+//    static void translateRecipes(ArrayList<Hits> listRecipes, FragmentSearchBinding binding, View view){
+//        TranslateBody translateBody = new TranslateBody();
+//        translateBody.texts = new String[listRecipes.size()];
+//        for (int i = 0; i < listRecipes.size(); i++) {
+//            translateBody.texts[i] = listRecipes.get(i).getRecipe().getLabel();
+//        }
+//        translateBody.targetLanguageCode = "ru";
+//
+//        Call<TranslateResponse> responseTranslateCall = Repository.getTranslate(RetrofitTranslateService.AIM_TOKEN, translateBody);
+//        responseTranslateCall.enqueue(new Callback<TranslateResponse>() {
+//            @Override
+//            public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
+//                if(response.isSuccessful() && response.code() == 200){
+//                    TranslateResponse translateResponse = response.body();
+//
+//                    for (int i = 0; i < translateResponse.translations.length; i++) {
+//                        listRecipes.get(i).getRecipe().setLabel(translateResponse.translations[i].text);
+//                    }
+//
+//                    binding.recipesRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+//                    adapter = new RecipesRecyclerAdapter(listRecipes);
+//                    binding.recipesRecyclerView.setAdapter(adapter);
+//                    binding.progressBar.setVisibility(View.GONE);
+//
+//                }else
+//                    Toast.makeText(view.getContext(),
+//                            "Токен не получен " + response.code(), Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<TranslateResponse> call, Throwable t) {
+//                Toast.makeText(view.getContext(),
+//                        "Токен не получен " + t.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        });
+//    }
 
     static void sortRecipesByCalories(RecipeResponse recipeResponse, ArrayList<Hits> listRecipes, FragmentSearchBinding binding){
         for (int i = 0; i < recipeResponse.hits.size(); i++) {
@@ -283,11 +310,11 @@ public class BindSearchAdapter {
         }
     }
 
-    static TranslateBody createBodyForTranslateIngreds(String ingreds){
-        TranslateBody translateBody = new TranslateBody();
-        translateBody.texts = new String[1];
-        translateBody.texts[0] = ingreds;
-        translateBody.targetLanguageCode = "en";
-        return translateBody;
-    }
+//    static TranslateBody createBodyForTranslateIngreds(String ingreds){
+//        TranslateBody translateBody = new TranslateBody();
+//        translateBody.texts = new String[1];
+//        translateBody.texts[0] = ingreds;
+//        translateBody.targetLanguageCode = "en";
+//        return translateBody;
+//    }
 }

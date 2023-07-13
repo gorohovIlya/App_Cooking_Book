@@ -26,15 +26,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:textIsSelectable="true"
+            android:layout_marginTop="20dp"
+            android:minHeight="48dp"
             android:text="@string/title_search_text"
             android:textColor="@color/red"
+            android:textIsSelectable="true"
             android:textSize="30sp"
-            android:layout_marginTop="20dp"
             android:textStyle="bold|italic"
-            app:layout_constraintTop_toBottomOf="@+id/image_search"
             app:layout_constraintEnd_toEndOf="@+id/image_search"
-            app:layout_constraintStart_toStartOf="@+id/image_search" />
+            app:layout_constraintStart_toStartOf="@+id/image_search"
+            app:layout_constraintTop_toBottomOf="@+id/image_search" />
 
         <EditText
             android:id="@+id/et_search"
@@ -45,7 +46,8 @@
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="@id/title_search"
             app:layout_constraintStart_toStartOf="@id/title_search"
-            app:layout_constraintTop_toBottomOf="@+id/title_search" />
+            app:layout_constraintTop_toBottomOf="@+id/title_search"
+            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -88,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
-                android:text="@string/btn_search"
+                android:text="@string/search"
                 android:minHeight="48dp" />
         </LinearLayout>
 
@@ -104,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Доп. опции"/>
+                android:text="Additional options"/>
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -115,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_calories"
-            android:text="Калории:"
+            android:text="Calories:"
             android:textColor="@color/red"
             android:textSize="30sp"
             android:textStyle="bold|italic"
@@ -139,7 +141,8 @@
                 android:id="@+id/et_from_calories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="от"/>
+                android:hint="from"
+                android:inputType="number"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -150,11 +153,12 @@
                 android:id="@+id/et_to_calories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="до" />
+                android:hint="to"
+                android:inputType="number"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ккал"
+                android:text="kcal"
                 android:textColor="@color/black"/>
 
         </LinearLayout>
@@ -163,7 +167,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_time"
-            android:text="Время:"
+            android:text="Time:"
             android:textColor="@color/red"
             android:textSize="30sp"
             android:textStyle="bold|italic"
@@ -185,15 +189,16 @@
                 android:id="@+id/et_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Диапазон через (-)"
+                android:hint="Range via (-)"
                 android:gravity="center"
                 app:layout_constraintEnd_toEndOf="@+id/tv_time"
                 app:layout_constraintStart_toStartOf="@+id/tv_time"
-                app:layout_constraintTop_toBottomOf="@+id/tv_time"/>
+                app:layout_constraintTop_toBottomOf="@+id/tv_time"
+                android:digits="0123456789-"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="мин"
+                android:text="min"
                 android:textColor="@color/black"/>
         </LinearLayout>
 
@@ -221,7 +226,7 @@
                     android:id="@+id/text_no_recipes"
                     android:visibility="gone"
                     android:gravity="center"
-                    android:text="Таких рецептов нет"/>
+                    android:text="There are no such recipes"/>
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

@@ -28,33 +28,38 @@
         android:id="@+id/addRecipeImg"/>
 
 
-
     <EditText
         android:id="@+id/recipe_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/recipe_name"
-        android:textSize="18sp" />
+        android:minHeight="48dp"
+        android:textSize="18sp"
+        android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 
     <EditText
         android:id="@+id/ingreds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/ingreds"
         android:inputType="textMultiLine"
-        android:hint="@string/ingredients" />
+        android:minHeight="48dp"
+        android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 
     <EditText
         android:id="@+id/how_to_prepare"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/how_to_prepare"
         android:inputType="textMultiLine"
-        android:hint="@string/how_to_prepare" />
+        android:minHeight="48dp"
+        android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 
     <Button
         android:id="@+id/create_recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/add" />
+        android:text="@string/btn_add" />
 
 </LinearLayout>

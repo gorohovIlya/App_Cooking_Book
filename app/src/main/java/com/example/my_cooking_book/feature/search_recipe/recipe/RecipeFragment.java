@@ -58,46 +58,60 @@ public class RecipeFragment extends Fragment {
         binding = FragmentRecipeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        TranslateBody translateBody = new TranslateBody();
-        translateBody.texts = new String[ingredientsLines.size()];
-        for (int i = 0; i < ingredientsLines.size(); i++) {
-            translateBody.texts[i] = ingredientsLines.get(i);
-        }
-        translateBody.targetLanguageCode = "ru";
+        binding.titleRecipe.setText(label);
+        Picasso.get().load(imageUrl).into(binding.imageRecipe);
+        binding.calories.setText(calories + " kcal");
+        binding.time.setText(totalTime + " min");
+        binding.weight.setText(totalWeight + " g");
 
-        Call<TranslateResponse> responseTranslateCall = Repository.getTranslate(RetrofitTranslateService.AIM_TOKEN, translateBody);
-        responseTranslateCall.enqueue(new Callback<TranslateResponse>() {
-            @Override
-            public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
-                if(response.isSuccessful() && response.code() == 200) {
-                    TranslateResponse translateResponse = response.body();
-                    ingredientsLines.clear();
+        binding.webUrl.setText(url);
+        Linkify.addLinks(binding.webUrl, Linkify.WEB_URLS);
+        binding.webUrl.setMovementMethod(LinkMovementMethod.getInstance());
 
-                    for (int i = 0; i < translateResponse.translations.length; i++) {
-                        ingredientsLines.add(translateResponse.translations[i].text);
-                    }
+        binding.ingredientRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        adapter = new IngredientRecyclerAdapter(ingredientsLines);
+        binding.ingredientRecyclerView.setAdapter(adapter);
 
-                    binding.titleRecipe.setText(label);
-                    Picasso.get().load(imageUrl).into(binding.imageRecipe);
-                    binding.calories.setText(calories + " ккал");
-                    binding.time.setText(totalTime + " мин");
-                    binding.weight.setText(totalWeight + " г");
+//        TranslateBody translateBody = new TranslateBody();
+//        translateBody.texts = new String[ingredientsLines.size()];
+//        for (int i = 0; i < ingredientsLines.size(); i++) {
+//            translateBody.texts[i] = ingredientsLines.get(i);
+//        }
+//        translateBody.targetLanguageCode = "ru";
 
-                    binding.webUrl.setText(url);
-                    Linkify.addLinks(binding.webUrl, Linkify.WEB_URLS);
-                    binding.webUrl.setMovementMethod(LinkMovementMethod.getInstance());
-
-                    binding.ingredientRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-                    adapter = new IngredientRecyclerAdapter(ingredientsLines);
-                    binding.ingredientRecyclerView.setAdapter(adapter);
-                }else
-                    Toast.makeText(view.getContext(),
-                            "Токен не получен " + response.code(), Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onFailure(Call<TranslateResponse> call, Throwable t) {}
-        });
+//        Call<TranslateResponse> responseTranslateCall = Repository.getTranslate(RetrofitTranslateService.AIM_TOKEN, translateBody);
+//        responseTranslateCall.enqueue(new Callback<TranslateResponse>() {
+//            @Override
+//            public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
+//                if(response.isSuccessful() && response.code() == 200) {
+//                    TranslateResponse translateResponse = response.body();
+//                    ingredientsLines.clear();
+//
+//                    for (int i = 0; i < translateResponse.translations.length; i++) {
+//                        ingredientsLines.add(translateResponse.translations[i].text);
+//                    }
+//
+//                    binding.titleRecipe.setText(label);
+//                    Picasso.get().load(imageUrl).into(binding.imageRecipe);
+//                    binding.calories.setText(calories + " ккал");
+//                    binding.time.setText(totalTime + " мин");
+//                    binding.weight.setText(totalWeight + " г");
+//
+//                    binding.webUrl.setText(url);
+//                    Linkify.addLinks(binding.webUrl, Linkify.WEB_URLS);
+//                    binding.webUrl.setMovementMethod(LinkMovementMethod.getInstance());
+//
+//                    binding.ingredientRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+//                    adapter = new IngredientRecyclerAdapter(ingredientsLines);
+//                    binding.ingredientRecyclerView.setAdapter(adapter);
+//                }else
+//                    Toast.makeText(view.getContext(),
+//                            "Токен не получен " + response.code(), Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<TranslateResponse> call, Throwable t) {}
+//        });
 
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override

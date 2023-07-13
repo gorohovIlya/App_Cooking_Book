@@ -26,28 +26,29 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"/>
 
-
-
     <EditText
         android:id="@+id/update_recipe_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/recipe_name"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 
     <EditText
         android:id="@+id/update_ingreds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
-        android:hint="@string/ingredients" />
+        android:hint="@string/ingreds"
+        android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 
     <EditText
         android:id="@+id/update_how_to_prepare"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
-        android:hint="@string/how_to_prepare" />
+        android:hint="@string/how_to_prepare"
+        android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 
     <Button
         android:id="@+id/update_recipe"

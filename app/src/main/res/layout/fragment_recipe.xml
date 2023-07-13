@@ -21,14 +21,14 @@
             android:id="@+id/title_recipe"
             android:textSize="30sp"
             android:textColor="@color/red"
-            android:text="Название"
+            android:text="Name"
             android:gravity="center"
             android:layout_marginTop="15dp"
             android:textStyle="bold|italic"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Калории:"
+            android:text="Calories:"
             android:gravity="center"
             android:layout_marginTop="5dp"
             android:textSize="24sp"
@@ -38,14 +38,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/calories"
-            android:text="Калории"
+            android:text="Calories"
             android:gravity="center"
             android:textSize="20sp"
             android:textColor="#322D2D" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Общее время приготовления:"
+            android:text="Total cooking time:"
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:textSize="24sp"
@@ -55,14 +55,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/time"
-            android:text="Время"
+            android:text="Time"
             android:gravity="center"
             android:textSize="20sp"
             android:textColor="#322D2D" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Общий вес:"
+            android:text="Total weight:"
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:textSize="24sp"
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/weight"
-            android:text="Вес"
+            android:text="Weight"
             android:gravity="center"
             android:textSize="20sp"
             android:textColor="#322D2D"/>
@@ -96,7 +96,7 @@
                     android:id="@+id/text_ingred"
                     android:textSize="24sp"
                     android:textColor="@color/red"
-                    android:text="Ингредиенты:"
+                    android:text="Ingredients:"
                     android:gravity="center"
                     android:textStyle="bold|italic" />
                 <androidx.recyclerview.widget.RecyclerView
@@ -111,7 +111,7 @@
             android:id="@+id/url_text"
             android:textSize="24sp"
             android:textColor="@color/red"
-            android:text="Ссылка на рецепт:"
+            android:text="Link to the recipe:"
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:textStyle="bold|italic" />
@@ -138,7 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/add_fav"
-                android:text="Добавить в любимые"
+                android:text="Add to Favorites"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
